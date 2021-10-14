@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="profileListener"
+            type="com.spokn.presentation.ui.profile.ProfileViewModel" />
+
+        <variable
+            name="userObject"
+            type="com.spokn.domain.model.User" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Profile Title -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dp16w"
+                android:layout_marginTop="@dimen/dp16w"
+                android:layout_marginEnd="@dimen/dp16w"
+                android:fontFamily="@font/convergence"
+                android:gravity="top|center"
+                android:text="@string/profile_title"
+                android:textColor="@color/colorOnSecondary"
+                android:textSize="@dimen/sp26"
+                android:textStyle="bold" />
+            <!-- User name -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dp16w"
+                android:layout_marginTop="@dimen/dp16w"
+                android:layout_marginEnd="@dimen/dp16w"
+                android:fontFamily="@font/convergence"
+                android:gravity="top|center"
+                android:text="@string/profile_user_name"
+                app:text="@{userObject.userName}"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/sp16" />
+            <!-- User Address -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dp16w"
+                android:layout_marginEnd="@dimen/dp16w"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:gravity="top|center"
+                android:text="@string/profile_user_address"
+                android:textColor="@color/colorGreyDark"
+                android:textSize="@dimen/sp12"
+                app:text="@{userObject.userAddress.addressCity}"
+                app:drawableStartCompat="@drawable/ic_location" />
+            <!-- Albums list -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_profile_albums_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp16w"
+                android:clipToPadding="false"
+                tools:listitem="@layout/item_album"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

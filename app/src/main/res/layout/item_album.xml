@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="albumObject"
+            type="com.spokn.domain.model.Album" />
+
+        <variable
+            name="albumListener"
+            type="com.spokn.presentation.ui.profile.ProfileViewModel" />
+
+    </data>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp8w"
+            app:cardCornerRadius="@dimen/dp4w"
+            android:onClick="@{()->albumListener.onAlbumClicked(albumObject.albumId)}"
+            app:cardBackgroundColor="@color/colorOnPrimary"
+            app:cardElevation="@dimen/dp2w">
+
+            <!-- Album title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="center"
+                android:padding="@dimen/dp8w"
+                app:text="@{albumObject.albumTitle}"
+                android:text="@string/album_name"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/sp13" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+</layout>
