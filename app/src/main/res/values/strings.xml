@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Spokn</string>
+
+
+    <!-- Response messages-->
+    <string name="error_no_connection">Oops , there\'s no Network connection</string>
+    <string name="error_message_title">Error!</string>
+    <string name="success_message_title">Success</string>
+
+</resources>
