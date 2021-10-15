@@ -20,10 +20,8 @@ class BaseActivityViewModel : ViewModel() {
             is Resource.Loading -> {_observeLoading.value= Event(true) }
             is Resource.Success -> {_observeSuccess.value= Event(responseState.message!!) }
             is Resource.Failed -> {_observeFailed.value= Event(responseState.message!!) }
-            is Resource.NoConnection -> {_observeNoConnection.value= Event(true)
-            }
-            is Resource.HideLoading -> {_observeHideLoading.value= Event(true)
-            }
+            is Resource.NoConnection -> {_observeNoConnection.value= Event(true) }
+            is Resource.HideLoading -> {_observeHideLoading.value= Event(true) }
         }
     }
 

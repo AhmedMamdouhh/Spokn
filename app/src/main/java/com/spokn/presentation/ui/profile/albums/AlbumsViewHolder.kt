@@ -2,7 +2,7 @@ package com.spokn.presentation.ui.profile.albums
 
 import androidx.recyclerview.widget.RecyclerView
 import com.spokn.databinding.ItemAlbumBinding
-import com.spokn.domain.model.Album
+import com.spokn.domain.model.album.Album
 import com.spokn.presentation.ui.profile.ProfileViewModel
 
 
@@ -12,7 +12,7 @@ class AlbumsViewHolder(
 ) : RecyclerView.ViewHolder(itemAlbumBinding.root) {
 
 
-    fun bind(album:Album) {
+    fun bind(album: Album) {
         itemAlbumBinding.albumObject = album
         itemAlbumBinding.albumListener = profileViewModel
     }

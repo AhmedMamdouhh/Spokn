@@ -3,6 +3,7 @@ package com.spokn.presentation.ui.profile
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.spokn.databinding.FragmentProfileBinding
 import com.spokn.manager.utilities.EventObserver
+import com.spokn.manager.utilities.recyclerAnimationExtension
 import com.spokn.presentation.ui.profile.albums.AlbumsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,10 +48,12 @@ class ProfileFragment : Fragment() {
     private fun observeUserDetails() {
         profileViewModel.observeUserDetails.observe(viewLifecycleOwner, EventObserver { user ->
             profileBinding.apply {
+                clProfileParent.visibility = VISIBLE
                 rvProfileAlbumsList.apply {
                     setHasFixedSize(true)
                     layoutManager = LinearLayoutManager(requireContext())
                     albumsAdapter = AlbumsAdapter(user.userAlbums!!, profileViewModel)
+                    recyclerAnimationExtension(this)
                     adapter = albumsAdapter
                 }
                 userObject = user

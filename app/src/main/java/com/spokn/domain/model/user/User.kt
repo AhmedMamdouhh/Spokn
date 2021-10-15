@@ -1,10 +1,10 @@
-package com.spokn.domain.model
+package com.spokn.domain.model.user
 
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.google.gson.annotations.SerializedName
 import com.spokn.BR
-import io.reactivex.Single
+import com.spokn.domain.model.album.Album
 
 class User : BaseObservable() {
 
@@ -38,26 +38,9 @@ class User : BaseObservable() {
             field = value
             notifyPropertyChanged(BR.userAlbums)
         }
-}
 
-data class UserAddress(
-    @SerializedName("street")
-    var addressStreet: String = "",
-
-    @SerializedName("suite")
-    var addressSuite: String = "",
-
-    @SerializedName("city")
-    var addressCity: String = "",
-
-    @SerializedName("zipcode")
-    var addressZipcode: String = ""
-) {
-    override fun toString(): String {
-        return "$addressStreet, $addressSuite, $addressCity, $addressZipcode"
+     fun splitUserName():String{
+        return userName.replaceFirst(" ","\n")
     }
 }
 
-interface UserGateway {
-    fun requestUser(): Single<List<User>>
-}

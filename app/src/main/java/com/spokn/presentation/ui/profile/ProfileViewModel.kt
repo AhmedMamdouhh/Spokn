@@ -2,9 +2,9 @@ package com.spokn.presentation.ui.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.spokn.domain.model.Album
-import com.spokn.domain.model.User
-import com.spokn.domain.use_case.ProfileUseCase
+import com.spokn.domain.model.album.Album
+import com.spokn.domain.model.user.User
+import com.spokn.domain.use_case.profile.ProfileUseCaseGateway
 import com.spokn.manager.base.BaseViewModel
 import com.spokn.manager.base.ResponseManager
 import com.spokn.manager.utilities.Event
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    private val profileUseCase: ProfileUseCase,
+    private val profileUseCase: ProfileUseCaseGateway,
     private val responseManager: ResponseManager
 ) : BaseViewModel() {
 
@@ -34,7 +34,10 @@ class ProfileViewModel @Inject constructor(
             _observeUserDetails.value = Event(userDetails)
         }, {errorMessage->
             responseManager.hideLoading()
-            val message = errorMessage
+            if(errorMessage.contains("host"))
+                responseManager.noConnection()
+            else
+                responseManager.failed(errorMessage)
         })
 
         compositeDisposable.add(disposable)
@@ -42,7 +45,7 @@ class ProfileViewModel @Inject constructor(
 
 
     //Click:
-    fun onAlbumClicked(album :Album){
+    fun onAlbumClicked(album : Album){
         _observeAlbumClicked.value = Event(album)
     }
 

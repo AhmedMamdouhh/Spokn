@@ -7,7 +7,7 @@
 
         <variable
             name="albumObject"
-            type="com.spokn.domain.model.Album" />
+            type="com.spokn.domain.model.album.Album" />
 
         <variable
             name="albumListener"

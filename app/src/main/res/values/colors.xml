@@ -10,7 +10,7 @@
     <color name="colorOnSecondary">#000000</color>
 
 
-    <color name="colorGreyDark">#dddddd</color>
+    <color name="colorGreyDark">#C8C8C8</color>
     <color name="colorBlackTransparent">#33000000</color>
     <color name="colorBackground">#FFF7F1</color>
 </resources>

@@ -2,6 +2,7 @@ package com.spokn.manager.utilities
 
 import android.graphics.drawable.Drawable
 import android.util.Log
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.net.toUri
@@ -17,6 +18,7 @@ import com.spokn.R
 import com.bumptech.glide.load.model.LazyHeaders
 
 import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.target.CustomViewTarget
 import com.bumptech.glide.request.transition.Transition
 
@@ -46,7 +48,5 @@ fun ImageView.bindImage( imgUrl: String?) {
                     this@bindImage.setImageDrawable(resource)
                 }
             })    }
-
-
 }
 

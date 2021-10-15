@@ -17,7 +17,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryLight">
 
         <!-- Photo Title -->
         <TextView
@@ -28,16 +29,16 @@
             android:layout_marginTop="@dimen/dp16w"
             android:layout_marginEnd="@dimen/dp16w"
             android:fontFamily="@font/convergence"
-            android:gravity="top|center"
+            android:gravity="start"
             android:singleLine="true"
             android:text="@string/photo_title"
             android:textColor="@color/colorOnSecondary"
             android:textSize="@dimen/sp16"
             android:textStyle="bold"
-            app:text="@{albumTitle}"
             app:layout_constraintEnd_toStartOf="@+id/iv_photos_close"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:text="@{albumTitle}" />
 
         <!-- close -->
         <androidx.appcompat.widget.AppCompatImageView
@@ -64,14 +65,13 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/search_view"
-                style="@style/SearchView.Default"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@android:color/transparent"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="@dimen/dp16w"
-                android:focusable="false"
-                android:focusableInTouchMode="true"
                 android:hint="@string/photo_search_hint"
+                android:onTextChanged="@{photoListener::onSearchChange}"
                 android:padding="@dimen/dp8w" />
 
         </com.google.android.material.card.MaterialCardView>

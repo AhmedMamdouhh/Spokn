@@ -1,21 +1,13 @@
-package com.spokn.domain.model
+package com.spokn.domain.model.album
 
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.google.gson.annotations.SerializedName
 import com.spokn.BR
-import io.reactivex.Single
 
 
 class Album : BaseObservable() {
 
-    @SerializedName("userId")
-    @get:Bindable
-    var userId : Int = 1
-        set(value) {
-            field = value
-            notifyPropertyChanged(BR.userId)
-        }
 
     @SerializedName("id")
     @get:Bindable
@@ -32,8 +24,4 @@ class Album : BaseObservable() {
             field = value
             notifyPropertyChanged(BR.albumTitle)
         }
-}
-
-interface AlbumsGateway {
-    fun requestAlbums(userId: Int): Single<ArrayList<Album>>
 }

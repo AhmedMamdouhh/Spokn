@@ -2,14 +2,13 @@ package com.spokn.data.remote
 
 object ApiEndPoints {
 
-    const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
     //Get user
-    const val GET_USERS = "${BASE_URL}users"
+    const val GET_USERS = "users"
 
     //Get albums
-    const val GET_ALBUMS = "${BASE_URL}albums"
+    const val GET_ALBUMS = "albums"
 
     //Get photos
-    const val GET_PHOTOS = "${BASE_URL}photos"
+    const val GET_PHOTOS = "photos"
 }

@@ -1,18 +1,17 @@
 package com.spokn.presentation.ui.photos
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.spokn.databinding.DialogPhotosBinding
 import com.spokn.manager.base.BaseBottomSheet
-import com.spokn.manager.utilities.Constants
-import com.spokn.manager.utilities.EventObserver
+import com.spokn.manager.utilities.*
 import com.spokn.presentation.ui.photos.photos_list.PhotosAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,9 +36,11 @@ class PhotosDialog : BaseBottomSheet() {
         init()
         observePhotos()
         observeCloseClicked()
+        observePhotoClicked()
 
         return photoBinding.root
     }
+
 
     private fun init(){
         photosViewModel.requestPhotos(args.albumId)
@@ -56,11 +57,19 @@ class PhotosDialog : BaseBottomSheet() {
         })
     }
 
+    private fun observePhotoClicked() {
+        photosViewModel.observePhotoClicked.observe(viewLifecycleOwner,EventObserver{photoUrl->
+            showSinglePhotoExtension(photoUrl)
+        })
+    }
+
+
     private fun observePhotos() {
         photosViewModel.observePhotos.observe(viewLifecycleOwner,EventObserver{photos->
             photosAdapter = PhotosAdapter(photos,photosViewModel)
             photoBinding.rvPhotosList.apply {
                 setHasFixedSize(true)
+                recyclerAnimationExtension(this)
                 layoutManager = GridLayoutManager(requireContext(),Constants.SPAN_COUNT)
                 adapter = photosAdapter
             }

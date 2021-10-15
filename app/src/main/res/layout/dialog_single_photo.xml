@@ -4,27 +4,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable
-            name="photoObject"
-            type="com.spokn.domain.model.photo.Photo" />
 
         <variable
-            name="photoListener"
-            type="com.spokn.presentation.ui.photos.PhotosViewModel" />
+            name="photoUrl"
+            type="String" />
 
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{()->photoListener.onPhotoClicked(photoObject.photoUrl)}"
         app:cardElevation="@dimen/dp4w">
 
+
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_single_photo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            app:imageUrl="@{photoObject.photoThumbnailUrl}"
+            app:imageUrl="@{photoUrl}"
             app:srcCompat="@drawable/ic_broken_image" />
 
     </com.google.android.material.card.MaterialCardView>

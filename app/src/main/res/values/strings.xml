@@ -13,6 +13,7 @@
     <!-- Photo item -->
     <string name="photo_search_hint">Search in images..</string>
     <string name="photo_title">ut pariatur rerum ipsum natus repellendus praesentium</string>
+    <string name="photo_nothing_found">Nothing found, search again!</string>
 
 
     <!-- Response messages-->

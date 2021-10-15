@@ -1,11 +1,7 @@
 package com.spokn.di
 
+import com.spokn.BuildConfig
 import com.spokn.data.remote.Api
-import com.spokn.data.remote.ApiEndPoints
-import com.spokn.data.repository.photos.PhotosRepository
-import com.spokn.data.repository.photos.PhotosRepositoryGateway
-import com.spokn.data.repository.profile.ProfileRepository
-import com.spokn.data.repository.profile.ProfileRepositoryGateway
 import com.spokn.manager.base.ResponseManager
 import dagger.Module
 import dagger.Provides
@@ -35,6 +31,9 @@ object AppModule {
     fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor)
             : OkHttpClient = OkHttpClient
         .Builder()
+        .connectTimeout(5, TimeUnit.SECONDS)
+        .readTimeout(5, TimeUnit.SECONDS)
+        .writeTimeout(5, TimeUnit.SECONDS)
         .retryOnConnectionFailure(false)
         .addInterceptor(httpLoggingInterceptor)
         .build()
@@ -44,7 +43,7 @@ object AppModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit
         .Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(ApiEndPoints.BASE_URL)
+        .baseUrl(BuildConfig.BASE_URL)
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .client(okHttpClient)
         .build()
@@ -58,13 +57,5 @@ object AppModule {
     @Provides
     fun provideResponseManager() = ResponseManager()
 
-    //Repositories
-    @Singleton
-    @Provides
-    fun provideProfileRepository(api: Api) : ProfileRepositoryGateway = ProfileRepository(api)
-
-    @Singleton
-    @Provides
-    fun providePhotoRepository(api: Api) : PhotosRepositoryGateway = PhotosRepository(api)
 
 }

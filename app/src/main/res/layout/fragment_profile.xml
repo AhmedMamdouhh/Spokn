@@ -12,14 +12,25 @@
 
         <variable
             name="userObject"
-            type="com.spokn.domain.model.User" />
+            type="com.spokn.domain.model.user.User" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_profile_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorBackground">
+        android:visibility="visible">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/img_profile_header"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,7 +63,7 @@
                 android:layout_marginEnd="@dimen/dp16w"
                 android:fontFamily="@font/convergence"
                 android:gravity="start"
-                app:text="@{userObject.userName}"
+                app:text="@{userObject.splitUserName()}"
                 android:text="@string/profile_user_name"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/sp26" />
@@ -64,21 +75,37 @@
                 android:layout_marginStart="@dimen/dp16w"
                 android:layout_marginEnd="@dimen/dp16w"
                 android:fontFamily="@font/montserrat_semi_bold"
-                android:gravity="start"
+                android:gravity="start|center"
                 android:text="@string/profile_user_address"
                 android:textColor="@color/colorGreyDark"
                 android:textSize="@dimen/sp12"
                 app:text="@{userObject.userAddress.toString()}"
                 app:drawableStartCompat="@drawable/ic_location" />
+
+            <!-- Albums Title -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dp16w"
+                android:layout_marginTop="@dimen/dp16w"
+                android:layout_marginEnd="@dimen/dp16w"
+                android:fontFamily="@font/convergence"
+                android:gravity="start"
+                android:text="@string/profile_albums_title"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/sp16"
+                android:textStyle="bold"/>
             <!-- Albums list -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_profile_albums_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/dp16w"
+                android:layout_marginTop="@dimen/dp8w"
                 android:clipToPadding="false"
                 tools:listitem="@layout/item_album"/>
         </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

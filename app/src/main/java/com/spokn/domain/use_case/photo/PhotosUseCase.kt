@@ -1,8 +1,8 @@
-package com.spokn.domain.use_case
+package com.spokn.domain.use_case.photo
 
+import android.util.Log
 import com.spokn.data.repository.photos.PhotosRepositoryGateway
-import com.spokn.domain.model.Photo
-import com.spokn.domain.model.User
+import com.spokn.domain.model.photo.Photo
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
@@ -11,11 +11,11 @@ import javax.inject.Inject
 
 class PhotosUseCase @Inject constructor(
     private val photosRepository: PhotosRepositoryGateway
-) {
+):PhotosUseCaseGateway {
 
     private lateinit var photos:ArrayList<Photo>
 
-    fun execute(
+    override fun execute(
         albumId:Int,
         successConsumer: Consumer<ArrayList<Photo>>,
         errorConsumer: Consumer<String>
@@ -28,7 +28,7 @@ class PhotosUseCase @Inject constructor(
             }
             .subscribe(
                 {successConsumer.accept(photos)},
-                {errorConsumer.accept("ERROR")}
+                { errorConsumer.accept(it.toString()) }
             )
 
     }

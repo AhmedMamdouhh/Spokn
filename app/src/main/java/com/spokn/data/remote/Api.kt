@@ -1,13 +1,12 @@
 package com.spokn.data.remote
 
-import com.spokn.domain.model.Album
-import com.spokn.domain.model.Photo
-import com.spokn.domain.model.User
+
+import com.spokn.domain.model.album.Album
+import com.spokn.domain.model.photo.Photo
+import com.spokn.domain.model.user.User
 import com.spokn.manager.utilities.Constants
 import io.reactivex.Single
 import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Headers
 import retrofit2.http.Query
 
 interface Api {

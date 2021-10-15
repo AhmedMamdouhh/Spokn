@@ -1,6 +1,6 @@
 package com.spokn.data.repository.profile
 
-import com.spokn.domain.model.AlbumsGateway
-import com.spokn.domain.model.UserGateway
+import com.spokn.domain.model.user.UserGateway
+import com.spokn.domain.model.album.AlbumsGateway
 
 interface ProfileRepositoryGateway : UserGateway, AlbumsGateway

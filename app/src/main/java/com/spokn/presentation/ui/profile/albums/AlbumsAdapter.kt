@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.spokn.databinding.ItemAlbumBinding
-import com.spokn.domain.model.Album
+import com.spokn.domain.model.album.Album
 import com.spokn.presentation.ui.profile.ProfileViewModel
 
 class AlbumsAdapter(
