@@ -13,5 +13,8 @@ object Constants {
     const val MESSAGE = "message"
 
     const val USER_ID = "userId"
+    const val ALBUM_ID = "albumId"
+
+    const val SPAN_COUNT = 3
 
 }

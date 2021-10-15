@@ -20,22 +20,28 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp8w"
             app:cardCornerRadius="@dimen/dp4w"
-            android:onClick="@{()->albumListener.onAlbumClicked(albumObject.albumId)}"
-            app:cardBackgroundColor="@color/colorOnPrimary"
+            android:onClick="@{()->albumListener.onAlbumClicked(albumObject)}"
+            app:cardBackgroundColor="@color/colorPrimaryLight"
             app:cardElevation="@dimen/dp2w">
 
             <!-- Album title -->
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_regular"
                 android:gravity="center"
-                android:padding="@dimen/dp8w"
+                android:drawablePadding="@dimen/dp8w"
+                android:paddingStart="@dimen/dp8w"
+                android:paddingEnd="@dimen/dp8w"
+                android:paddingTop="@dimen/dp16w"
+                android:paddingBottom="@dimen/dp16w"
                 app:text="@{albumObject.albumTitle}"
                 android:text="@string/album_name"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/sp13" />
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/sp13"
+                app:drawableStartCompat="@drawable/ic_photo"
+                app:drawableEndCompat="@drawable/ic_arrow_right" />
 
         </com.google.android.material.card.MaterialCardView>
 

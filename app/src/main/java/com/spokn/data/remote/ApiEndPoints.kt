@@ -9,4 +9,7 @@ object ApiEndPoints {
 
     //Get albums
     const val GET_ALBUMS = "${BASE_URL}albums"
+
+    //Get photos
+    const val GET_PHOTOS = "${BASE_URL}photos"
 }

@@ -11,7 +11,7 @@ class Album : BaseObservable() {
 
     @SerializedName("userId")
     @get:Bindable
-    var userId = 1
+    var userId : Int = 1
         set(value) {
             field = value
             notifyPropertyChanged(BR.userId)
@@ -19,7 +19,7 @@ class Album : BaseObservable() {
 
     @SerializedName("id")
     @get:Bindable
-    var albumId = 1
+    var albumId :Int = 1
         set(value) {
             field = value
             notifyPropertyChanged(BR.albumId)
@@ -27,7 +27,7 @@ class Album : BaseObservable() {
 
     @SerializedName("title")
     @get:Bindable
-    var albumTitle = ""
+    var albumTitle : String = ""
         set(value) {
             field = value
             notifyPropertyChanged(BR.albumTitle)

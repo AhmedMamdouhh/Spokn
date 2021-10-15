@@ -9,6 +9,24 @@
         android:id="@+id/profile"
         android:name="com.spokn.presentation.ui.profile.ProfileFragment"
         android:label="Profile" >
+        <action
+            android:id="@+id/action_profile_to_photosDialog"
+            app:destination="@id/photosDialog" />
     </fragment>
+
+    <!-- Photos Dialog -->
+    <dialog
+        android:id="@+id/photosDialog"
+        android:name="com.spokn.presentation.ui.photos.PhotosDialog"
+        android:label="PhotosDialog" >
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
+        <argument
+            android:name="albumTitle"
+            app:argType="string" />
+    </dialog>
+
+
 
 </navigation>

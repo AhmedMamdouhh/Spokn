@@ -2,10 +2,11 @@ package com.spokn.di
 
 import com.spokn.data.remote.Api
 import com.spokn.data.remote.ApiEndPoints
-import com.spokn.data.repository.ProfileRepository
-import com.spokn.data.repository.ProfileRepositoryGateway
+import com.spokn.data.repository.photos.PhotosRepository
+import com.spokn.data.repository.photos.PhotosRepositoryGateway
+import com.spokn.data.repository.profile.ProfileRepository
+import com.spokn.data.repository.profile.ProfileRepositoryGateway
 import com.spokn.manager.base.ResponseManager
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,9 +35,6 @@ object AppModule {
     fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor)
             : OkHttpClient = OkHttpClient
         .Builder()
-        .connectTimeout(5, TimeUnit.SECONDS)
-        .readTimeout(5, TimeUnit.SECONDS)
-        .writeTimeout(5, TimeUnit.SECONDS)
         .retryOnConnectionFailure(false)
         .addInterceptor(httpLoggingInterceptor)
         .build()
@@ -64,5 +62,9 @@ object AppModule {
     @Singleton
     @Provides
     fun provideProfileRepository(api: Api) : ProfileRepositoryGateway = ProfileRepository(api)
+
+    @Singleton
+    @Provides
+    fun providePhotoRepository(api: Api) : PhotosRepositoryGateway = PhotosRepository(api)
 
 }

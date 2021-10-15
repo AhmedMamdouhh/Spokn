@@ -3,10 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidWorkPlace/Spokn/app/src/main/res/drawable-v24/ic_broken_image.xml" value="0.2703125" />
+        <entry key="..\:/AndroidWorkPlace/Spokn/app/src/main/res/drawable/ic_arrow_right.xml" value="0.2703125" />
+        <entry key="..\:/AndroidWorkPlace/Spokn/app/src/main/res/drawable/ic_broken_image.xml" value="0.2703125" />
         <entry key="..\:/AndroidWorkPlace/Spokn/app/src/main/res/drawable/ic_close.xml" value="0.2703125" />
+        <entry key="..\:/AndroidWorkPlace/Spokn/app/src/main/res/drawable/ic_location.xml" value="0.2703125" />
+        <entry key="..\:/AndroidWorkPlace/Spokn/app/src/main/res/drawable/ic_photo.xml" value="0.2703125" />
+        <entry key="..\:/AndroidWorkPlace/Spokn/app/src/main/res/drawable/ic_search.xml" value="0.2703125" />
         <entry key="..\:/AndroidWorkPlace/Spokn/app/src/main/res/layout/activity_main.xml" value="0.2391304347826087" />
+        <entry key="..\:/AndroidWorkPlace/Spokn/app/src/main/res/layout/dialog_photos.xml" value="0.2346014492753623" />
         <entry key="..\:/AndroidWorkPlace/Spokn/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/AndroidWorkPlace/Spokn/app/src/main/res/layout/item_album.xml" value="0.264" />
+        <entry key="..\:/AndroidWorkPlace/Spokn/app/src/main/res/layout/item_photo.xml" value="0.2346014492753623" />
         <entry key="..\:/AndroidWorkPlace/Spokn/app/src/main/res/layout/layout_error.xml" value="0.2391304347826087" />
         <entry key="..\:/AndroidWorkPlace/Spokn/app/src/main/res/layout/layout_loader.xml" value="0.2391304347826087" />
         <entry key="..\:/AndroidWorkPlace/Spokn/app/src/main/res/layout/layout_no_connection.xml" value="0.13020833333333334" />

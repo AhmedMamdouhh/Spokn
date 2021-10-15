@@ -7,5 +7,14 @@
         <item name="colorPrimaryDark">@color/colorPrimary</item>
     </style>
 
+    <!-- Search view style -->
+    <style name="SearchView.Default" parent="Widget.AppCompat.SearchView">
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@null</item>
+        <item name="fontFamily">@font/convergence</item>
+        <item name="iconifiedByDefault">false</item>
+        <item name="queryBackground">@null</item>
+        <item name="searchIcon">@drawable/ic_search</item>
+    </style>
 
 </resources>

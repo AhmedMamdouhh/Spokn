@@ -26,7 +26,7 @@ class User : BaseObservable() {
 
     @SerializedName("address")
     @get:Bindable
-    var userAddress: UserAddress? = null
+    var userAddress: UserAddress?=null
         set(value) {
             field = value
             notifyPropertyChanged(BR.userAddress)
@@ -52,8 +52,12 @@ data class UserAddress(
 
     @SerializedName("zipcode")
     var addressZipcode: String = ""
-)
+) {
+    override fun toString(): String {
+        return "$addressStreet, $addressSuite, $addressCity, $addressZipcode"
+    }
+}
 
-interface UserGateway{
-    fun requestUser():Single<List<User>>
+interface UserGateway {
+    fun requestUser(): Single<List<User>>
 }

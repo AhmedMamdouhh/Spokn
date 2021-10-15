@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="albumTitle"
+            type="String" />
+
+        <variable
+            name="photoListener"
+            type="com.spokn.presentation.ui.photos.PhotosViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Photo Title -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dp16w"
+            android:layout_marginTop="@dimen/dp16w"
+            android:layout_marginEnd="@dimen/dp16w"
+            android:fontFamily="@font/convergence"
+            android:gravity="top|center"
+            android:singleLine="true"
+            android:text="@string/photo_title"
+            android:textColor="@color/colorOnSecondary"
+            android:textSize="@dimen/sp16"
+            android:textStyle="bold"
+            app:text="@{albumTitle}"
+            app:layout_constraintEnd_toStartOf="@+id/iv_photos_close"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- close -->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_photos_close"
+            android:layout_width="@dimen/dp55w"
+            android:layout_height="@dimen/dp55h"
+            android:layout_alignParentEnd="true"
+            android:onClick="@{()->photoListener.onCloseClicked()}"
+            android:padding="@dimen/dp16w"
+            android:src="@drawable/ic_close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!-- search view -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_photos_search_container"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="@dimen/dp16w"
+            android:layout_marginEnd="@dimen/dp16w"
+            app:cardElevation="@dimen/dp3w"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_photos_close">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/search_view"
+                style="@style/SearchView.Default"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="@dimen/dp16w"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
+                android:hint="@string/photo_search_hint"
+                android:padding="@dimen/dp8w" />
+
+        </com.google.android.material.card.MaterialCardView>
+        <!-- photos list -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_photos_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp16w"
+            android:clipToPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cv_photos_search_container" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

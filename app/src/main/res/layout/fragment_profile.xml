@@ -38,11 +38,10 @@
                 android:layout_marginTop="@dimen/dp16w"
                 android:layout_marginEnd="@dimen/dp16w"
                 android:fontFamily="@font/convergence"
-                android:gravity="top|center"
+                android:gravity="start"
                 android:text="@string/profile_title"
-                android:textColor="@color/colorOnSecondary"
-                android:textSize="@dimen/sp26"
-                android:textStyle="bold" />
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/sp26"/>
             <!-- User name -->
             <TextView
                 android:layout_width="match_parent"
@@ -52,11 +51,11 @@
                 android:layout_marginTop="@dimen/dp16w"
                 android:layout_marginEnd="@dimen/dp16w"
                 android:fontFamily="@font/convergence"
-                android:gravity="top|center"
-                android:text="@string/profile_user_name"
+                android:gravity="start"
                 app:text="@{userObject.userName}"
+                android:text="@string/profile_user_name"
                 android:textColor="@color/colorAccent"
-                android:textSize="@dimen/sp16" />
+                android:textSize="@dimen/sp26" />
             <!-- User Address -->
             <TextView
                 android:layout_width="match_parent"
@@ -65,11 +64,11 @@
                 android:layout_marginStart="@dimen/dp16w"
                 android:layout_marginEnd="@dimen/dp16w"
                 android:fontFamily="@font/montserrat_semi_bold"
-                android:gravity="top|center"
+                android:gravity="start"
                 android:text="@string/profile_user_address"
                 android:textColor="@color/colorGreyDark"
                 android:textSize="@dimen/sp12"
-                app:text="@{userObject.userAddress.addressCity}"
+                app:text="@{userObject.userAddress.toString()}"
                 app:drawableStartCompat="@drawable/ic_location" />
             <!-- Albums list -->
             <androidx.recyclerview.widget.RecyclerView

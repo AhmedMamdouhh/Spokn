@@ -3,12 +3,17 @@
 
     <!-- Profile Fragment -->
     <string name="profile_title">Profile</string>
-    <string name="profile_user_name">Leanne Graham</string>
+    <string name="profile_user_name">Leanne\nGraham</string>
     <string name="profile_user_address">Kulas Light Apt. 556 Gwenborough 92998–3874</string>
     <string name="profile_albums_title">My Albums</string>
 
     <!-- Album item -->
     <string name="album_name">ut pariatur rerum ipsum natus repellendus praesentium</string>
+
+    <!-- Photo item -->
+    <string name="photo_search_hint">Search in images..</string>
+    <string name="photo_title">ut pariatur rerum ipsum natus repellendus praesentium</string>
+
 
     <!-- Response messages-->
     <string name="error_no_connection">Oops , there\'s no Network connection</string>

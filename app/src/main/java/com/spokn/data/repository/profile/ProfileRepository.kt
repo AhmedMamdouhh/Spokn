@@ -1,4 +1,4 @@
-package com.spokn.data.repository
+package com.spokn.data.repository.profile
 
 import com.spokn.data.remote.Api
 import javax.inject.Inject

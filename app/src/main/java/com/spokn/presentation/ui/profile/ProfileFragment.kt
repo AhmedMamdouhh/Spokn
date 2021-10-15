@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.spokn.databinding.FragmentProfileBinding
@@ -18,7 +19,7 @@ class ProfileFragment : Fragment() {
 
     private lateinit var profileBinding: FragmentProfileBinding
     private val profileViewModel: ProfileViewModel by viewModels()
-    private lateinit var albumsAdapter:AlbumsAdapter
+    private lateinit var albumsAdapter: AlbumsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,8 +31,16 @@ class ProfileFragment : Fragment() {
         profileBinding.profileListener = profileViewModel
 
         observeUserDetails()
+        observeAlbumClicked()
 
         return profileBinding.root
+    }
+
+    private fun observeAlbumClicked() {
+        profileViewModel.observeAlbumClicked.observe(viewLifecycleOwner, EventObserver { album ->
+            val action = ProfileFragmentDirections.actionProfileToPhotosDialog(album.albumId,album.albumTitle)
+            findNavController().navigate(action)
+        })
     }
 
     private fun observeUserDetails() {

@@ -2,6 +2,7 @@ package com.spokn.presentation.ui.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.spokn.domain.model.Album
 import com.spokn.domain.model.User
 import com.spokn.domain.use_case.ProfileUseCase
 import com.spokn.manager.base.BaseViewModel
@@ -17,7 +18,7 @@ class ProfileViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     private val _observeUserDetails = MutableLiveData<Event<User>>()
-    private val _observeAlbumClicked = MutableLiveData<Event<Boolean>>()
+    private val _observeAlbumClicked = MutableLiveData<Event<Album>>()
 
 
     init {
@@ -41,13 +42,13 @@ class ProfileViewModel @Inject constructor(
 
 
     //Click:
-    fun onAlbumClicked(albumId :Int){
-
+    fun onAlbumClicked(album :Album){
+        _observeAlbumClicked.value = Event(album)
     }
 
     //Getters:
     val observeUserDetails: LiveData<Event<User>>
         get() = _observeUserDetails
-    val observeAlbumClicked: LiveData<Event<Boolean>>
+    val observeAlbumClicked: LiveData<Event<Album>>
         get() = _observeAlbumClicked
 }

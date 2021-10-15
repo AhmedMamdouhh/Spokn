@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="photoObject"
+            type="com.spokn.domain.model.Photo" />
+
+        <variable
+            name="photoListener"
+            type="com.spokn.presentation.ui.photos.PhotosViewModel" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{()->photoListener.onPhotoClicked()}"
+        app:cardElevation="@dimen/dp4w">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            app:imageUrl="@{photoObject.photoThumbnailUrl}"
+            app:srcCompat="@drawable/ic_broken_image" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>
