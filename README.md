@@ -1,7 +1,7 @@
 # Spokn
 
 
-https://user-images.githubusercontent.com/34347060/137583968-b364b300-3890-47c6-9469-d1ea40573ee2.mp4
+![Spokn](https://user-images.githubusercontent.com/34347060/137584147-7c2420d0-9fa0-4546-8549-8cb6ac812242.gif)
 
 
 
