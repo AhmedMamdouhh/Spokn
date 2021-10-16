@@ -120,8 +120,6 @@ abstract class BaseActivity : AppCompatActivity() {
     private fun initializeProgress() {
         loadingBar = Dialog(this, R.style.Theme_AppCompat_DayNight)
         loadingBar!!.setCancelable(false)
-        loadingBar!!.setCanceledOnTouchOutside(false)
-        loadingBar!!.window?.setType(WindowManager.LayoutParams.TYPE_TOAST )
         loadingBar!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val inflater = LayoutInflater.from(this)
         val loadingView = inflater.inflate(R.layout.layout_loader, null)

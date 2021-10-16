@@ -21,7 +21,7 @@ class PhotosDialog : BaseBottomSheet() {
     private lateinit var photoBinding: DialogPhotosBinding
     private lateinit var photosAdapter: PhotosAdapter
     private val photosViewModel: PhotosViewModel by viewModels()
-    private val args:PhotosDialogArgs by navArgs()
+    private val args: PhotosDialogArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,7 +29,9 @@ class PhotosDialog : BaseBottomSheet() {
         savedInstanceState: Bundle?
     ): View {
 
-        photoBinding = DialogPhotosBinding.inflate(inflater,container,false)
+        photoBinding = DialogPhotosBinding.inflate(inflater, container, false)
+        photoBinding.lifecycleOwner = viewLifecycleOwner
+
 
         init()
         observePhotos()
@@ -37,10 +39,13 @@ class PhotosDialog : BaseBottomSheet() {
         observePhotoClicked()
         observeErrorHappened()
 
+        observeShowLoader()
+        observeHideLoader()
+
         return photoBinding.root
     }
 
-    private fun init(){
+    private fun init() {
         photosViewModel.requestPhotos(args.albumId)
         photoBinding.apply {
             photoListener = photosViewModel
@@ -50,33 +55,45 @@ class PhotosDialog : BaseBottomSheet() {
     }
 
     private fun observeCloseClicked() {
-        photosViewModel.observeCloseClicked.observe(viewLifecycleOwner,EventObserver{
+        photosViewModel.observeCloseClicked.observe(viewLifecycleOwner, EventObserver {
             closeSheet()
         })
     }
 
     private fun observePhotoClicked() {
-        photosViewModel.observePhotoClicked.observe(viewLifecycleOwner,EventObserver{photoUrl->
+        photosViewModel.observePhotoClicked.observe(viewLifecycleOwner, EventObserver { photoUrl ->
             showSinglePhotoExtension(photoUrl)
         })
     }
 
     private fun observeErrorHappened() {
-        photosViewModel.observeErrorHappened.observe(viewLifecycleOwner,EventObserver{
+        photosViewModel.observeErrorHappened.observe(viewLifecycleOwner, EventObserver {
             this.dismiss()
         })
     }
 
-
     private fun observePhotos() {
-        photosViewModel.observePhotos.observe(viewLifecycleOwner,EventObserver{photos->
-            photosAdapter = PhotosAdapter(photos,photosViewModel)
+        photosViewModel.observePhotos.observe(viewLifecycleOwner, EventObserver { photos ->
+            photosAdapter = PhotosAdapter(photos, photosViewModel)
             photoBinding.rvPhotosList.apply {
                 setHasFixedSize(true)
                 recyclerAnimationExtension(this)
-                layoutManager = GridLayoutManager(requireContext(),Constants.SPAN_COUNT)
+                layoutManager = GridLayoutManager(requireContext(), Constants.SPAN_COUNT)
                 adapter = photosAdapter
             }
+        })
+    }
+
+    private fun observeShowLoader() {
+        photosViewModel.observeShowLoader.observe(viewLifecycleOwner, EventObserver {
+            photoBinding.lavPhotosLoader.visibility = VISIBLE
+        })
+    }
+
+    private fun observeHideLoader() {
+        photosViewModel.observeHideLoader.observe(viewLifecycleOwner, EventObserver {
+            photoBinding.lavPhotosLoader.visibility = GONE
+            photoBinding.cvPhotosSearchContainer.visibility = VISIBLE
         })
     }
 }

@@ -31,6 +31,7 @@ class ProfileFragment : Fragment() {
 
         profileBinding = FragmentProfileBinding.inflate(inflater, container, false)
         profileBinding.profileListener = profileViewModel
+        profileBinding.lifecycleOwner = viewLifecycleOwner
 
         observeUserDetails()
         observeAlbumClicked()

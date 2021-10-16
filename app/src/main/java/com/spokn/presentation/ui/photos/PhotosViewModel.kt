@@ -31,31 +31,36 @@ class PhotosViewModel @Inject constructor(
     private val _observeCloseClicked = MutableLiveData<Event<Boolean>>()
     private val _observePhotoClicked = MutableLiveData<Event<String>>()
     private val _observeErrorHappened =  MutableLiveData<Event<Boolean>>()
+    private val _observeShowLoader =  MutableLiveData<Event<Boolean>>()
+    private val _observeHideLoader =  MutableLiveData<Event<Boolean>>()
 
     private lateinit var photosList: ArrayList<Photo>
 
 
     fun requestPhotos(albumId: Int) {
-        responseManager.loading()
-        photosUseCase.execute(albumId,
+        _observeShowLoader.value = Event(true)
+        val disposable = photosUseCase.execute(albumId,
             { photos ->
-                responseManager.hideLoading()
+                _observeHideLoader.value = Event(true)
                 _observePhotos.value = Event(photos)
                 photosList = photos
 
             }, { errorMessage ->
-                responseManager.hideLoading()
+                _observeHideLoader.value = Event(true)
                 _observeErrorHappened.value = Event(true)
                 if (errorMessage.contains("host"))
                     responseManager.noConnection()
                 else
                     responseManager.failed(errorMessage)
             })
+
+        compositeDisposable.add(disposable)
     }
 
     //Click:
     fun onCloseClicked() {
         _observeCloseClicked.value = Event(true)
+        compositeDisposable.clear()
     }
 
     fun onPhotoClicked(photoUrl: String) {
@@ -92,4 +97,8 @@ class PhotosViewModel @Inject constructor(
         get() = _observeErrorHappened
     val observePhotoClicked: LiveData<Event<String>>
         get() = _observePhotoClicked
+    val observeShowLoader: LiveData<Event<Boolean>>
+        get() = _observeShowLoader
+    val observeHideLoader: LiveData<Event<Boolean>>
+        get() = _observeHideLoader
 }
