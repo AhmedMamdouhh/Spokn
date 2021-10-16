@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.Window
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -119,6 +120,8 @@ abstract class BaseActivity : AppCompatActivity() {
     private fun initializeProgress() {
         loadingBar = Dialog(this, R.style.Theme_AppCompat_DayNight)
         loadingBar!!.setCancelable(false)
+        loadingBar!!.setCanceledOnTouchOutside(false)
+        loadingBar!!.window?.setType(WindowManager.LayoutParams.TYPE_TOAST )
         loadingBar!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val inflater = LayoutInflater.from(this)
         val loadingView = inflater.inflate(R.layout.layout_loader, null)

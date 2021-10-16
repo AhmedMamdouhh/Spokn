@@ -30,6 +30,8 @@ class PhotosViewModel @Inject constructor(
     private val _observePhotos = MutableLiveData<Event<ArrayList<Photo>>>()
     private val _observeCloseClicked = MutableLiveData<Event<Boolean>>()
     private val _observePhotoClicked = MutableLiveData<Event<String>>()
+    private val _observeErrorHappened =  MutableLiveData<Event<Boolean>>()
+
     private lateinit var photosList: ArrayList<Photo>
 
 
@@ -43,6 +45,7 @@ class PhotosViewModel @Inject constructor(
 
             }, { errorMessage ->
                 responseManager.hideLoading()
+                _observeErrorHappened.value = Event(true)
                 if (errorMessage.contains("host"))
                     responseManager.noConnection()
                 else
@@ -68,8 +71,6 @@ class PhotosViewModel @Inject constructor(
             .subscribeBy(
                 onNext = { photosListSearch(it) }
             )
-
-
     }
 
     private fun photosListSearch(keyWord: String) {
@@ -87,7 +88,8 @@ class PhotosViewModel @Inject constructor(
         get() = _observePhotos
     val observeCloseClicked: LiveData<Event<Boolean>>
         get() = _observeCloseClicked
-
+    val observeErrorHappened: LiveData<Event<Boolean>>
+        get() = _observeErrorHappened
     val observePhotoClicked: LiveData<Event<String>>
         get() = _observePhotoClicked
 }

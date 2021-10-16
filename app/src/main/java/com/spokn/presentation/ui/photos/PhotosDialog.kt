@@ -23,8 +23,6 @@ class PhotosDialog : BaseBottomSheet() {
     private val photosViewModel: PhotosViewModel by viewModels()
     private val args:PhotosDialogArgs by navArgs()
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,10 +35,10 @@ class PhotosDialog : BaseBottomSheet() {
         observePhotos()
         observeCloseClicked()
         observePhotoClicked()
+        observeErrorHappened()
 
         return photoBinding.root
     }
-
 
     private fun init(){
         photosViewModel.requestPhotos(args.albumId)
@@ -60,6 +58,12 @@ class PhotosDialog : BaseBottomSheet() {
     private fun observePhotoClicked() {
         photosViewModel.observePhotoClicked.observe(viewLifecycleOwner,EventObserver{photoUrl->
             showSinglePhotoExtension(photoUrl)
+        })
+    }
+
+    private fun observeErrorHappened() {
+        photosViewModel.observeErrorHappened.observe(viewLifecycleOwner,EventObserver{
+            this.dismiss()
         })
     }
 

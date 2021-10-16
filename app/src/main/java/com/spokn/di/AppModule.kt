@@ -31,9 +31,6 @@ object AppModule {
     fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor)
             : OkHttpClient = OkHttpClient
         .Builder()
-        .connectTimeout(5, TimeUnit.SECONDS)
-        .readTimeout(5, TimeUnit.SECONDS)
-        .writeTimeout(5, TimeUnit.SECONDS)
         .retryOnConnectionFailure(false)
         .addInterceptor(httpLoggingInterceptor)
         .build()
